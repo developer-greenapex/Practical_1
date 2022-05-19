@@ -8,8 +8,8 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 @EnableConfigurationProperties
 public class CsvReaderApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CsvReaderApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CsvReaderApplication.class, args);
+    }
 
 }
