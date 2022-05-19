@@ -15,8 +15,6 @@ import java.util.List;
 
 
 @Service
-
-
 public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
@@ -31,7 +29,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void save(MultipartFile file) {
         try {
-            List<EmployeeModel> tutorials = CSVHelper.csvToTutorials(file.getInputStream());
+//            List<EmployeeModel> tutorials = CSVHelper.csvToTutorials(file.getInputStream());
+            List<EmployeeModel> tutorials = CSVHelper.csvToDB(file);
             employeeRepo.saveAll(tutorials);
         } catch (IOException e) {
             throw new RuntimeException("fail to store csv data: " + e.getMessage());
@@ -47,8 +46,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public ByteArrayInputStream load() {
         List<EmployeeModel> tutorials = employeeRepo.findAll();
 
-        ByteArrayInputStream in = CSVHelper.tutorialsToCSV(tutorials);
-        return in;
+        return CSVHelper.tutorialsToCSV(tutorials);
     }
 
 }

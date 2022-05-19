@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 @RequestMapping("/api/v1/")
@@ -45,7 +46,7 @@ public class EmployeeController {
 
                 String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                         .path("/api/csv/download/")
-                        .path(file.getOriginalFilename())
+                        .path(Objects.requireNonNull(file.getOriginalFilename()))
                         .toUriString();
 
                 return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message,fileDownloadUri));

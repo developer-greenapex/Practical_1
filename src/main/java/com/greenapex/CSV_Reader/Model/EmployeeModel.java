@@ -18,10 +18,10 @@ import lombok.NoArgsConstructor;
 public class EmployeeModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Integer age;
+    private String age;
     private String country;
 
 
