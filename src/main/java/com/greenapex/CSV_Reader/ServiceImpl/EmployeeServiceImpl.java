@@ -1,6 +1,7 @@
 package com.greenapex.CSV_Reader.ServiceImpl;
 
 import com.greenapex.CSV_Reader.Config.CSVHelper;
+import com.greenapex.CSV_Reader.Exception.NotFoundException;
 import com.greenapex.CSV_Reader.Model.EmployeeModel;
 import com.greenapex.CSV_Reader.Repository.EmployeeRepository;
 import com.greenapex.CSV_Reader.Service.EmployeeService;
@@ -49,4 +50,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         return CSVHelper.tutorialsToCSV(tutorials);
     }
 
+    @Override
+    public EmployeeModel findById(Long id) {
+        return employeeRepo.findById(id).orElseThrow(()->new NotFoundException("Employee Not Found"));
+    }
 }

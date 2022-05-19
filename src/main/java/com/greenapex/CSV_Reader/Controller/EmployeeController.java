@@ -84,4 +84,10 @@ public class EmployeeController {
                 .contentType(MediaType.parseMediaType("application/csv"))
                 .body(file);
     }
+
+    @GetMapping("/fetchById")
+    public ResponseEntity<Object> getEmpById(@RequestParam Long id){
+        EmployeeModel emp = employeeService.findById(id);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(emp);
+    }
 }

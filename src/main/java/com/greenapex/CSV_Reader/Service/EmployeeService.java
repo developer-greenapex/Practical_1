@@ -16,4 +16,6 @@ public interface EmployeeService {
     List<EmployeeModel> getAllEmployees();
 
     public ByteArrayInputStream load();
+
+    EmployeeModel findById(Long id);
 }
